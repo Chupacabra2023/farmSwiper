@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &452033990453756996
+--- !u!1 &2863359172688094158
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2565466916112857312}
-  - component: {fileID: 8076203777097670377}
-  - component: {fileID: 4759373367178291973}
-  - component: {fileID: 9164634787365485183}
+  - component: {fileID: 7605711235401506465}
+  - component: {fileID: 2322916631125004228}
+  - component: {fileID: 8061203147205068289}
+  - component: {fileID: 7538148190618743581}
+  - component: {fileID: -4737008467806002014}
   m_Layer: 5
-  m_Name: Grass
+  m_Name: Bucket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &2565466916112857312
+--- !u!224 &7605711235401506465
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452033990453756996}
+  m_GameObject: {fileID: 2863359172688094158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,26 +34,26 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &8076203777097670377
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -150, y: 0}
+  m_SizeDelta: {x: 150, y: 197.9775}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &2322916631125004228
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452033990453756996}
+  m_GameObject: {fileID: 2863359172688094158}
   m_CullTransparentMesh: 1
---- !u!114 &4759373367178291973
+--- !u!114 &8061203147205068289
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452033990453756996}
+  m_GameObject: {fileID: 2863359172688094158}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -66,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8921175048293811067, guid: c0344f855ce67664aabcc8858a4137ad, type: 3}
+  m_Sprite: {fileID: -4696760917660491729, guid: 762db5db0b984e24895f06c6f561c9de, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -76,17 +77,31 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &9164634787365485183
+--- !u!114 &7538148190618743581
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452033990453756996}
+  m_GameObject: {fileID: 2863359172688094158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eca142b43b9584449ce0233eaa3f089, type: 3}
+  m_Script: {fileID: 11500000, guid: f82ab3f77ca98fa4eba12548419b5884, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GrassBehaviour
-  tallGrassSprite: {fileID: -8921175048293811067, guid: fdcc92906587a8542b370adbc794e588, type: 3}
-  cutGrassSprite: {fileID: 3680396084116801079, guid: 3e42a6f04033bf949b0577deb79b9a7d, type: 3}
+  m_EditorClassIdentifier: '::'
+--- !u!114 &-4737008467806002014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863359172688094158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f6da4d2e0df0841894d241835f1a6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bucket
+  wellTransform: {fileID: 0}
+  cowTransform: {fileID: 0}
+  filledBucketSprite: {fileID: 3815847949822687179, guid: a7801dc7188393e4c9d793fa5d8cdee2, type: 3}
+  emptyBucketSprite: {fileID: -4696760917660491729, guid: 762db5db0b984e24895f06c6f561c9de, type: 3}

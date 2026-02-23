@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &452033990453756996
+--- !u!1 &5822272083726790747
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,51 +8,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2565466916112857312}
-  - component: {fileID: 8076203777097670377}
-  - component: {fileID: 4759373367178291973}
-  - component: {fileID: 9164634787365485183}
+  - component: {fileID: 2569237498040136440}
+  - component: {fileID: 7520347891354416744}
+  - component: {fileID: 1633940380929183809}
+  - component: {fileID: 3639831758616041885}
   m_Layer: 5
-  m_Name: Grass
+  m_Name: Sharpener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &2565466916112857312
+--- !u!224 &2569237498040136440
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452033990453756996}
+  m_GameObject: {fileID: 5822272083726790747}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -83, y: 117}
+  m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &8076203777097670377
+--- !u!222 &7520347891354416744
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452033990453756996}
+  m_GameObject: {fileID: 5822272083726790747}
   m_CullTransparentMesh: 1
---- !u!114 &4759373367178291973
+--- !u!114 &1633940380929183809
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452033990453756996}
+  m_GameObject: {fileID: 5822272083726790747}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8921175048293811067, guid: c0344f855ce67664aabcc8858a4137ad, type: 3}
+  m_Sprite: {fileID: -828585026100829126, guid: 642ec3ebefa79754aaa14b73b09b4156, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -76,17 +76,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &9164634787365485183
+--- !u!114 &3639831758616041885
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452033990453756996}
+  m_GameObject: {fileID: 5822272083726790747}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eca142b43b9584449ce0233eaa3f089, type: 3}
+  m_Script: {fileID: 11500000, guid: 6337bb1af55796f49b8cf4a7e68bb4bd, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GrassBehaviour
-  tallGrassSprite: {fileID: -8921175048293811067, guid: fdcc92906587a8542b370adbc794e588, type: 3}
-  cutGrassSprite: {fileID: 3680396084116801079, guid: 3e42a6f04033bf949b0577deb79b9a7d, type: 3}
+  m_EditorClassIdentifier: '::'
