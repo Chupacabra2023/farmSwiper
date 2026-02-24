@@ -72,27 +72,35 @@ public class Bucket : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     
 }
 
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        scrollRect.enabled = true;
-        this.transform.position = originalPosition;
+   public void OnEndDrag(PointerEventData eventData)
+{
+    scrollRect.enabled = true;
+    this.transform.position = originalPosition;
 
-        if(isFilled)
+    if (isFilled)
     {
         var results = new System.Collections.Generic.List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, results);
-        
-        foreach(var result in results)
+
+        foreach (var result in results)
         {
-            if(result.gameObject.GetComponent<CowBehaviour>() != null)
+            if (result.gameObject.GetComponent<CowBehaviour>() != null)
             {
                 Debug.Log("Cow watered!");
                 BucketManager.EmptyAllBuckets();
                 break;
             }
+
+            // napln napajadlo
+            WaterBucket waterBucket = result.gameObject.GetComponent<WaterBucket>();
+            if (waterBucket != null)
+            {
+                waterBucket.AddWater(100f); // kolko vody pridame
+                BucketManager.EmptyAllBuckets();
+                Debug.Log("Napajadlo naplnene!");
+                break;
+            }
         }
     }
-
-        
-    }
+}
 }
