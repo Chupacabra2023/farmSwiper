@@ -24,4 +24,22 @@ public class ChickenManager : MonoBehaviour
     {
         return chickens.Count;
     }
+
+    public int GetOutsideChickenCount()
+    {
+        return chickens.FindAll(c =>
+            c != null &&
+            !c.GetComponent<ChickenMovement>().isSitting
+        ).Count;
+    }
+
+    public int GetAdultOutsideChickenCount()
+    {
+        return chickens.FindAll(c =>
+            c != null &&
+            c.GetComponent<ChickenMovement>() is ChickenMovement m &&
+            !m.isSitting &&
+            m.IsAdult
+        ).Count;
+    }
 }

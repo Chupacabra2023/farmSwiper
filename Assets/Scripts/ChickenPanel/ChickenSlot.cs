@@ -5,15 +5,16 @@ using UnityEngine.EventSystems;
 public class ChickenSlot : MonoBehaviour, IPointerClickHandler
 {
     public bool isOccupied = false;
+
     private Image slotImage;
-    private GameObject chickenObject; // drzi referenciu na kurku
+    private GameObject chickenObject;
 
     void Awake()
     {
         slotImage = GetComponent<Image>();
         if (slotImage == null)
             slotImage = gameObject.AddComponent<Image>();
-        
+
         slotImage.color = new Color(0, 0, 0, 0);
         slotImage.raycastTarget = true;
     }
@@ -33,11 +34,9 @@ public class ChickenSlot : MonoBehaviour, IPointerClickHandler
     {
         if (!isOccupied) return;
 
-        // vrat kurku von
         chickenObject.SetActive(true);
         chickenObject.GetComponent<ChickenMovement>().ReturnToYard();
 
-        // vycisti slot
         isOccupied = false;
         chickenObject = null;
         slotImage.sprite = null;

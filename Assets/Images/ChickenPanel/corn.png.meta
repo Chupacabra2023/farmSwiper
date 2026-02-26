@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8ffcf56a82a9b3743aa19a7bad162d6a
+guid: 184d6a0c5e6324e4ca753a61a18c6441
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2797306005179036147
-    second: ChickenBlack_0
+      213: -6521346793507321066
+    second: corn_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ChickenBlack_0
+      name: corn_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 209
-        width: 1064
-        height: 551
+        y: 0
+        width: 691
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d0e8c315209fd29d0800000000000000
-      internalID: -2797306005179036147
+      spriteID: 61b0dd394a58f75a0800000000000000
+      internalID: -6521346793507321066
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 540c544cb620c9446a5a23ed5d88faac
+    spriteID: f99e1687d216a854bb9fb81392706660
     internalID: 0
     vertices: []
     indices: 
@@ -148,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ChickenBlack_0: -2797306005179036147
-      ChickenBlack_1: -1368576770
+      corn_0: -6521346793507321066
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -9,6 +9,10 @@ public class ChickenMovement : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public float moveSpeed = 500f;
     public bool isSitting = false;
 
+    [Header("Walk Animation")]
+    public float walkAnimSpeed = 8f;
+    public float walkAnimAngle = 10f;
+
     [Header("Small Chickens")]
     public Sprite smallYellow;
     public Sprite smallBrown;
@@ -29,6 +33,7 @@ public class ChickenMovement : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private Vector2 originalPosition;
     private Canvas canvas;
     private Coroutine moveCoroutine;
+    private float walkAnimTime = 0f;
 
     void Start()
     {
@@ -45,57 +50,57 @@ public class ChickenMovement : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     }
 
     public void OnBeginDrag(PointerEventData eventData)
-{
-    if (!isAdult) return;
-    isDragging = true;
-    originalPosition = transform.position;
-    
-    // pivot na stred
-    rectTransform.pivot = new Vector2(0.5f, 0.5f);
-    
-    if (moveCoroutine != null)
-        StopCoroutine(moveCoroutine);
-}
+    {
+        if (!isAdult) return;
+        isDragging = true;
+        originalPosition = transform.position;
+
+        rectTransform.pivot = new Vector2(0.5f, 0.5f);
+        transform.rotation = Quaternion.identity;
+
+        if (moveCoroutine != null)
+            StopCoroutine(moveCoroutine);
+    }
 
     public void OnDrag(PointerEventData eventData)
-{
-    if (!isDragging) return;
-    transform.position = eventData.position; 
-}
+    {
+        if (!isDragging) return;
+        transform.position = eventData.position;
+    }
 
     public void OnEndDrag(PointerEventData eventData)
-{
-    if (!isDragging) return;
-    isDragging = false;
-
-    rectTransform.pivot = new Vector2(0.5f, 0.5f);
-
-    ChickenSlot slot = FindSlotUnderPointer(eventData);
-
-    if (slot != null && slot.TryPlaceChicken(adultSprite, gameObject))
-{
-     isSitting = true; 
-    StopAllCoroutines();
-    gameObject.SetActive(false);
-}
-    else
     {
-        transform.position = originalPosition;
-        rectTransform.pivot = new Vector2(0f, 0f);
+        if (!isDragging) return;
+        isDragging = false;
+
+        rectTransform.pivot = new Vector2(0.5f, 0.5f);
+
+        ChickenSlot slot = FindSlotUnderPointer(eventData);
+
+        if (slot != null && slot.TryPlaceChicken(adultSprite, gameObject))
+        {
+            isSitting = true;
+            StopAllCoroutines();
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            transform.position = originalPosition;
+            rectTransform.pivot = new Vector2(0f, 0f);
+            moveCoroutine = StartCoroutine(MoveRandomly());
+        }
+    }
+
+    public void ReturnToYard()
+    {
+        isSitting = false;
+        rectTransform.pivot = new Vector2(0.5f, 0.5f);
+        rectTransform.anchoredPosition = new Vector2(
+            Random.Range(-halfWidth, halfWidth),
+            Random.Range(minY, maxY)
+        );
         moveCoroutine = StartCoroutine(MoveRandomly());
     }
-}
-public void ReturnToYard()
-{
-    isSitting = false;  //
-    rectTransform.pivot = new Vector2(0.5f, 0.5f);
-    // vrat na nahodnu poziciu v dvore
-    rectTransform.anchoredPosition = new Vector2(
-        Random.Range(-halfWidth, halfWidth),
-        Random.Range(minY, maxY)
-    );
-    moveCoroutine = StartCoroutine(MoveRandomly());
-}
 
     private ChickenSlot FindSlotUnderPointer(PointerEventData eventData)
     {
@@ -141,6 +146,17 @@ public void ReturnToYard()
 
             while (Vector2.Distance(rectTransform.anchoredPosition, target) > 5f)
             {
+                Vector2 direction = target - rectTransform.anchoredPosition;
+
+                // otočenie podľa smeru
+                Vector3 scale = transform.localScale;
+                scale.x = direction.x > 0 ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
+                transform.localScale = scale;
+
+                // kolísanie
+                walkAnimTime += Time.deltaTime * walkAnimSpeed;
+                transform.rotation = Quaternion.Euler(0, 0, Mathf.Sin(walkAnimTime) * walkAnimAngle);
+
                 rectTransform.anchoredPosition = Vector2.MoveTowards(
                     rectTransform.anchoredPosition,
                     target,
@@ -148,6 +164,10 @@ public void ReturnToYard()
                 );
                 yield return null;
             }
+
+            // stojí - vráť rotáciu
+            walkAnimTime = 0f;
+            transform.rotation = Quaternion.identity;
 
             yield return new WaitForSeconds(Random.Range(2f, 6f));
         }

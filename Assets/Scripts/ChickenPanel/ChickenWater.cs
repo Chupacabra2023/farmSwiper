@@ -6,16 +6,14 @@ using UnityEngine.UI;
 public class WaterBucket : MonoBehaviour
 {
     [Header("Chickens")]
-    public GameObject chickenPrefab;
-    public Transform chickenParent;
-    public List<GameObject> chickens = new List<GameObject>();
-    public Button addChickenButton;
+
+    public ChickenManager chickenManager;
 
     [Header("Water")]
     public float waterAmount = 100f;
     public float maxWater = 100f;
-    private float drainInterval = 1f;
-    private float drainPerChicken = 50f;
+    private float drainInterval = 5f;
+    private float drainPerChicken = 1f;
 
     [Header("Sprites")]
     public Sprite fullBucketSprite;
@@ -23,35 +21,14 @@ public class WaterBucket : MonoBehaviour
     private Image bucketImage;
 
     void Start()
-    {
-        bucketImage = GetComponent<Image>();
-        UpdateSprite();
-        StartCoroutine(DrainWater());
-    }
+{
+    bucketImage = GetComponent<Image>();
+    Debug.Log($"bucketImage: {bucketImage}");
+    Debug.Log($"waterAmount: {waterAmount}");
+    UpdateSprite();
+    StartCoroutine(DrainWater());
+}
 
-    // ---- CHICKEN MANAGER ----
-    public void AddChicken()
-    {
-        if (chickens.Count >= 9) return;
-
-        GameObject newChicken = Instantiate(chickenPrefab, chickenParent);
-        chickens.Add(newChicken);
-
-        if (chickens.Count >= 9)
-            addChickenButton.interactable = false;
-    }
-
-    public int GetChickenCount() => chickens.Count;
-
-    public int GetOutsideChickenCount()
-    {
-        return chickens.FindAll(c =>
-            c != null &&
-            !c.GetComponent<ChickenMovement>().isSitting
-        ).Count;
-    }
-
-    // ---- WATER ----
     public void SetWater(float amount)
     {
         waterAmount = Mathf.Clamp(amount, 0, maxWater);
@@ -83,10 +60,10 @@ public class WaterBucket : MonoBehaviour
         {
             yield return new WaitForSeconds(drainInterval);
 
-            int outsideChickens = GetOutsideChickenCount();
+            int outsideChickens = chickenManager.GetOutsideChickenCount();
             DrainWaterAmount(outsideChickens * drainPerChicken);
 
-            Debug.Log($"Voda: {waterAmount} | Kurky vonku: {outsideChickens}");
+           
         }
     }
 }
