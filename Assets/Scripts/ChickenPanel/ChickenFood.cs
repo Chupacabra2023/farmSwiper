@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChickenFood : MonoBehaviour
+public class ChickenFood :Upgradeable 
 {
     [Header("Chickens")]
     public ChickenManager chickenManager;
@@ -54,5 +54,10 @@ public class ChickenFood : MonoBehaviour
 
            
         }
+    }
+     protected override void OnUpgraded(int newLevel)
+    {
+        
+        Debug.Log($"Food upgraded! Max food: 100");
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WaterBucket : MonoBehaviour
+public class WaterBucket : Upgradeable
 {
     [Header("Chickens")]
 
@@ -65,5 +65,10 @@ public class WaterBucket : MonoBehaviour
 
            
         }
+    }
+     protected override void OnUpgraded(int newLevel)
+    {
+        
+        Debug.Log($"Food upgraded! Max food: 100");
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
 
-public class Corn : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class Corn :Upgradeable, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private ScrollRect scrollRect;
     private bool isFilled = false;
@@ -108,4 +108,11 @@ public void OnEndDrag(PointerEventData eventData)
         }
     }
 }
+
+  protected override void OnUpgraded(int newLevel)
+    {
+        
+        Debug.Log($"Food upgraded! Max food: 100");
+    }
+
 }

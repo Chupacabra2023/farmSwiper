@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class EggsNest : MonoBehaviour, IPointerClickHandler
+public class EggsNest : Upgradeable, IPointerClickHandler
 {
     [Header("Sprites")]
     public Sprite emptySprite;
@@ -34,14 +34,19 @@ public class EggsNest : MonoBehaviour, IPointerClickHandler
     }
 
     public void OnPointerClick(PointerEventData eventData)
+{
+    // zbieranie vajicok
+    if (eggCount > 0)
     {
-        if (eggCount == 0) return;
-
         Debug.Log($"Zebralas {eggCount} vajicok!");
         eggCount = 0;
         UpdateSprite();
+        return; // ak zbieralo vajicka, nezobrazuj upgrade
     }
 
+    // ak nie su vajicka, zobraz upgrade popup
+    base.OnPointerClick(eventData);
+}
     public void AddEgg()
     {
         eggCount++;
@@ -74,5 +79,10 @@ public class EggsNest : MonoBehaviour, IPointerClickHandler
                 Debug.Log($"{freeChickens} kuriek znieslo vajicka!");
             }
         }
+    }
+    protected override void OnUpgraded(int newLevel)
+    {
+        
+        Debug.Log($"Food upgraded! Max food: 100");
     }
 }
